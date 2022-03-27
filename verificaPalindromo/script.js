@@ -1,20 +1,20 @@
 var resultado = document.getElementById('resultado')
 
-// usando reverse
 function verificaPalindromo() {
     const text = prompt('Insira a palavra a ser verificada')
-    const backwards = text.split('').reverse().join('')
-    
-    if(text == backwards)
+    if(isPalindrome1(text))
         resultado.innerHTML = 'São iguais'
     else
-        resultado.innerHTML = 'Não são iguais' 
+        resultado.innerHTML = 'Não são iguais'
+}
+
+// usando reverse
+function isPalindrome1(text) {
+    return(text === text.split('').reverse().join(''))
 }
 
 // sem usar reverse - usando forEach
-function verificaPalindromo2() {
-    const text = prompt('Insira a palavra a ser verificada')
-
+function isPalindrome2(text) {
     let backwards = Array(text.length-1)
     
     let counter = 0
@@ -23,25 +23,16 @@ function verificaPalindromo2() {
         counter++
     });
 
-    backwards = backwards.join('')
-
-    if(text == backwards)
-        resultado.innerHTML = 'São iguais'
-    else
-        resultado.innerHTML = 'Não são iguais'
+    return(text === backwards.join(''))
 }
 
 // sem usar reverse - usando for loop - ===
-function verificaPalindromo3() {
-    const text = prompt('Insira a palavra a ser verificada')
+function isPalindrome3(text) {
     let backwards = Array(text.length-1)
 
     for(let i = 0; i < text.length; i++) {
         backwards[i] = text[text.length - 1 - i]
     }
 
-    if(text === backwards.join(''))
-        resultado.innerHTML = 'São iguais'
-    else
-        resultado.innerHTML = 'Não são iguais'
+    return(text === backwards.join(''))
 }
